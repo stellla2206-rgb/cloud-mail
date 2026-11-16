@@ -7,44 +7,33 @@ keep_vars = true
 enabled = true
 
 [[d1_databases]]
-binding = "DB"			#d1数据库绑定名默认不可修改
-database_name = "cloud-mail"	#d1数据库名字
-database_id = "4a3f181d-6059-4515-9f01-d6c6cf22a8c1"	#d1数据库id
+binding = "DB"
+database_name = "cloud-mail"
+database_id = "4a3f181d-6059-4515-9f01-d6c6cf22a8c1"
 
 [[kv_namespaces]]
-binding = "KV"			#kv绑定名默认不可修改
-id = "3e93467b0fe44673a45bc44277472eda"	#kv数据库id
-
-#[[r2_buckets]]
-#binding = "r2"			#r2对象存储绑定名默认不可修改
-#bucket_name = ""		#r2对象存储桶的名字
-
-#[[send_email]]
-#name = "email"			#CF发件, 配置后优先使用
+binding = "KV"
+id = "3e93467b0fe44673a45bc44277472eda"
 
 [[send_email]]
-name = "forward"		#站内转发到已验证的其他邮箱，不限制单个地址
+name = "forward"
 
 [ai]
 binding = "ai"
 
 [assets]
-binding = "assets"		#静态资源绑定名默认不可修改
-directory = "./dist"	#前端vue项目打包的静态资源存放位置,默认dist
+binding = "assets"
+directory = "./dist"
 not_found_handling = "single-page-application"
 run_worker_first = true
 
 [triggers]
-crons = ["0 * * * *"]	#每小时执行；resetDaySendCount 仅在 UTC 0 点生效
-
+crons = ["0 * * * *"]
 
 [vars]
-#ai_model = ""			#ai模型,不填默认使用@cf/meta/llama-3.1-8b-instruct-fast
-#analysis_cache = false			#是否开启分析数据缓存
-#orm_log = false			#是否sql日志
-domain = ["frouronne.website"]				#邮件域名可配置多个 示例: ["example1.com","example2.com"]
-admin = "admin@frouronne.website"					#管理员的邮箱	示例: admin@example.com
-jwt_secret = "c9a7f3e8b2d14a6c9e8f1a2b3c4d5e6f7a8b9c0d"			#jwt令牌的密钥,随便填一串字符串
+domain = ["frouronne.website"]
+admin = "admin@frouronne.website"
+jwt_secret = "c9a7f3e8b2d14a6c9e8f1a2b3c4d5e6f7a8b9c0d"
 
 [build]
 command = "pnpm --prefix ../mail-vue install && pnpm --prefix ../mail-vue run build"
